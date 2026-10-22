@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo dashboard for managing disaster information and response status.">
+  <title>Disaster Information Management</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="Disaster information home"><span class="brand-icon">✚</span><span>Disaster<span class="brand-light">Desk</span></span></a>
+  <span class="demo-pill"><span class="dot"></span> DEMO DASHBOARD</span>
+</header>
+<main class="container">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">INFORMATION • COORDINATION • RESPONSE</p>
+      <h1>Disaster Information<br><span>Management System</span></h1>
+      <p class="hero-copy">A central dashboard to record incidents, follow response progress, and keep reports organized.</p>
+    </div>
+    <div class="hero-symbol" aria-hidden="true">⌁</div>
+  </section>
+
+  <section class="stats" aria-label="Incident summary">
+    <article class="stat"><span class="stat-label">TOTAL REPORTS</span><strong id="total-count">0</strong><span class="stat-note">All recorded incidents</span></article>
+    <article class="stat"><span class="stat-label">CRITICAL</span><strong id="critical-count">0</strong><span class="stat-note">Critical severity</span></article>
+    <article class="stat"><span class="stat-label">ACTIVE RESPONSES</span><strong id="active-count">0</strong><span class="stat-note">Not yet resolved</span></article>
+  </section>
+
+  <div class="section-head">
+    <div><p class="eyebrow">INCIDENT CENTER</p><h2>Disaster reports</h2></div>
+    <button class="primary" id="new-report-button" type="button">＋ New report</button>
+  </div>
+
+  <section class="panel form-panel" id="form-panel" hidden>
+    <div class="panel-heading"><div><h2>Submit a disaster report</h2><p>Enter the incident details below.</p></div><button class="icon-button" id="close-form" type="button" aria-label="Close form">×</button></div>
+    <form id="incident-form">
+      <div class="form-grid">
+        <div><label for="type">Disaster type *</label><select id="type" required><option value="">Select type</option><option>Flood</option><option>Earthquake</option><option>Cyclone</option><option>Wildfire</option><option>Landslide</option><option>Storm</option><option>Other</option></select></div>
+        <div><label for="severity">Severity *</label><select id="severity" required><option value="">Select severity</option><option>Low</option><option>Moderate</option><option>High</option><option>Critical</option></select></div>
+        <div class="wide"><label for="location">Location *</label><input id="location" maxlength="120" placeholder="City, district, or area" required></div>
+        <div class="wide"><label for="description">Incident description *</label><textarea id="description" maxlength="1000" rows="3" placeholder="Describe the incident and known impact" required></textarea></div>
+        <div class="wide"><label for="contact">Contact name (optional)</label><input id="contact" maxlength="80" placeholder="Name of reporting contact"></div>
+      </div>
+      <p class="form-error" id="form-error" role="alert"></p>
+      <div class="form-actions"><button class="secondary" id="cancel-form" type="button">Cancel</button><button class="primary" type="submit" id="submit-report">Save report</button></div>
+    </form>
+  </section>
+
+  <section class="panel reports-panel">
+    <div class="toolbar">
+      <div><h2>Recent incidents</h2><p id="result-count">Loading reports…</p></div>
+      <div class="filters">
+        <input id="search" type="search" placeholder="Search reports…" aria-label="Search reports">
+        <select id="status-filter" aria-label="Filter by status"><option value="">All statuses</option><option>Reported</option><option>Verifying</option><option>Response in progress</option><option>Resolved</option></select>
+      </div>
+    </div>
+    <div id="message" class="message" role="status" hidden></div>
+    <div id="incident-list" class="incident-list"></div>
+    <div id="empty-state" class="empty-state" hidden><div class="empty-icon">⌁</div><h3>No reports found</h3><p>Try changing your search or create a new incident report.</p></div>
+  </section>
+  <p class="safety-note"><strong>Demo only:</strong> This project is not connected to emergency services. For emergencies, contact your local emergency number. Do not enter sensitive personal information.</p>
+  <footer>Cloud-Based Disaster Information Management System · Educational project</footer>
+</main>
+</body>
+</html>
